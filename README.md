@@ -10,4 +10,5 @@ This is the source code for the [create your own package](https://atom.io/docs/l
 KNOWN BUGS
 ==========
 * After a custom range operation, all the multiple selection carets are lost.
+* Hitting undo results in each number being deleted rather than the entire operation
 * Needs a spec file?
