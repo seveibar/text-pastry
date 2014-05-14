@@ -1,16 +1,15 @@
 {
-  "name": "ascii-art",
-  "main": "./lib/ascii-art",
+  "name": "Text Pastry",
+  "main": "./lib/text-pastry",
   "version": "0.0.0",
   "private": true,
-  "description": "A short description of your package",
-  "activationEvents": ["ascii-art:convert"],
-  "repository": "https://github.com/atom/ascii-art",
+  "description": "Advanced pasting commands for multiple selection",
+  "activationEvents": ["text-pastry:paste-0-to-X","text-pastry:paste-1-to-x"],
+  "repository": "",
   "license": "MIT",
   "engines": {
     "atom": ">0.39.0"
   },
   "dependencies": {
-     "figlet": "1.0.8"
   }
 }
