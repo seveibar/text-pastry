@@ -97,4 +97,5 @@ module.exports =
         selections.pop()
 
         # Reset the buffer ranges
-        editor.setSelectedBufferRanges selections
+        if (selections.length > 0)
+            editor.setSelectedBufferRanges selections
