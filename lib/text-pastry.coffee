@@ -85,6 +85,9 @@ module.exports =
         # Set the editor's selected regions to the proper place
         editor.setSelectedBufferRanges new_selections
 
+        # Reclaim focus on editor if it was lost
+        atom.workspaceView.focus()
+
     # Removes the last multiple selection/buffer range/ caret
     undo_last_selection: () ->
 
