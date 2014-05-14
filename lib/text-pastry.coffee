@@ -1,7 +1,15 @@
+TextPastryView = require './text-pastry-view'
+
 module.exports =
-    activate: ->
+    view:null
+    activate: (state) ->
         atom.workspaceView.command "text-pastry:paste-0-to-x", => @paste_values(@step_generator(0, 1))
         atom.workspaceView.command "text-pastry:paste-1-to-x", => @paste_values(@step_generator(1, 1))
+        @view = new TextPastryView( (start, step) =>
+            @paste_values(@step_generator(start,step)))
+
+    deactivate: ->
+        @view.destroy()
 
     step_generator: (start,step) ->
         i = start

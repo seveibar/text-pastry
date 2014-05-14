@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Advanced pasting commands for multiple selection",
-  "activationEvents": ["text-pastry:paste-0-to-X","text-pastry:paste-1-to-x"],
+  "activationEvents": ["text-pastry:paste-0-to-X", "text-pastry:paste-1-to-x", "text-pastry:custom-range"],
   "repository": "",
   "license": "MIT",
   "engines": {
