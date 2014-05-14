@@ -3,6 +3,8 @@ TextPastryView = require './text-pastry-view'
 module.exports =
     view:null
     activate: (state) ->
+        # Undo last selection
+        atom.workspaceView.command "text-pastry:undo-last-selection", => @undo_last_selection()
         # Command for "0 to X" command
         atom.workspaceView.command "text-pastry:paste-0-to-x", => @paste_values(@step_generator(0, 1))
         # Command for "1 to X" command
@@ -32,11 +34,11 @@ module.exports =
     # This will insert values from the provided generator function to each
     # of the multiple carets.
     paste_values: (generator) ->
-        # This assumes the active pane item is an editor
+
         editor = atom.workspace.getActiveEditor()
 
         # Get all the selected ranges (each multiple selection)
-        selections = editor.getSelectedBufferRanges();
+        selections = editor.getSelectedBufferRanges()
 
         # The new editor selections after all the insertions
         new_selections = []
@@ -82,3 +84,17 @@ module.exports =
 
         # Set the editor's selected regions to the proper place
         editor.setSelectedBufferRanges new_selections
+
+    # Removes the last multiple selection/buffer range/ caret
+    undo_last_selection: () ->
+
+        editor = atom.workspace.getActiveEditor()
+
+        # Get all the selected ranges (each multiple selection)
+        selections = editor.getSelectedBufferRanges()
+
+        # Remove the last selection
+        selections.pop()
+
+        # Reset the buffer ranges
+        editor.setSelectedBufferRanges selections
