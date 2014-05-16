@@ -27,6 +27,11 @@ module.exports =
             i += step
             ret
 
+    list_generator: (list) ->
+        i = 0
+        ->
+            list[i++]
+
     get_buffer_range_at: (row,col) ->
         #TODO this should return an actual Range object
         return {start:[row,col],end:[row,col]}
