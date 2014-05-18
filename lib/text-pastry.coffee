@@ -1,4 +1,5 @@
 TextPastryView = require './text-pastry-view'
+TextPastryMultipleStringView = require './text-pastry-multiple-string-view'
 
 module.exports =
     view:null
@@ -12,6 +13,9 @@ module.exports =
         # Set up view for "Custom Range" command
         @view = new TextPastryView( (start, step) =>
             @paste_values(@step_generator(start,step)))
+        # Insert Multiple Strings / Paste Text
+        @view_multiple_strings = new TextPastryMultipleStringView( (words) =>
+            @paste_values(@list_generator(words)))
 
     deactivate: ->
         @view.destroy()
@@ -30,7 +34,7 @@ module.exports =
     list_generator: (list) ->
         i = 0
         ->
-            list[i++]
+            list[i++] || ""
 
     get_buffer_range_at: (row,col) ->
         #TODO this should return an actual Range object
@@ -74,7 +78,7 @@ module.exports =
                 selection_row, selection_col)
 
             # Get next value from generator
-            ins_string = "#{generator()}"
+            ins_string = "#{generator() || ''}"
 
             # Insert the value where the current caret is
             editor.insertText ins_string

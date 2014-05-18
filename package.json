@@ -7,7 +7,8 @@
     "text-pastry:paste-0-to-X",
     "text-pastry:paste-1-to-x",
     "text-pastry:custom-range",
-    "text-pastry:undo-last-selection"
+    "text-pastry:undo-last-selection",
+    "text-pastry:paste-multiple-strings"
   ],
   "repository": "https://github.com/seveibar/text-pastry",
   "license": "MIT",
