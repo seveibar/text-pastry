@@ -4,8 +4,6 @@ TextPastryMultipleStringView = require './text-pastry-multiple-string-view'
 module.exports =
     view:null
     activate: (state) ->
-        # Undo last selection
-        atom.workspaceView.command "text-pastry:undo-last-selection", => @undo_last_selection()
         # Command for "0 to X" command
         atom.workspaceView.command "text-pastry:paste-0-to-x", => @paste_values(@step_generator(0, 1))
         # Command for "1 to X" command
@@ -96,18 +94,3 @@ module.exports =
 
         # Reclaim focus on editor if it was lost
         atom.workspaceView.focus()
-
-    # Removes the last multiple selection/buffer range/ caret
-    undo_last_selection: () ->
-
-        editor = atom.workspace.getActiveEditor()
-
-        # Get all the selected ranges (each multiple selection)
-        selections = editor.getSelectedBufferRanges()
-
-        # Remove the last selection
-        selections.pop()
-
-        # Reset the buffer ranges
-        if (selections.length > 0)
-            editor.setSelectedBufferRanges selections
