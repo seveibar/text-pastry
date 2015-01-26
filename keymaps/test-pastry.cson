@@ -1,6 +1,6 @@
-'.platform-darwin .editor':
+'.platform-darwin .atom-text-editor':
   'cmd-u': 'text-pastry:undo-last-selection'
-'.platform-linux .editor':
+'.platform-linux .atom-text-editor':
   'ctrl-u': 'text-pastry:undo-last-selection'
-'.platform-win32 .editor':
+'.platform-win32 .atom-text-editor':
    'ctrl-u': 'text-pastry:undo-last-selection'
