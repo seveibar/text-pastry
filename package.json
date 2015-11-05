@@ -1,19 +1,23 @@
 {
   "name": "text-pastry",
   "main": "./lib/text-pastry",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Advanced pasting commands for multiple selection",
-  "activationEvents": [
-    "text-pastry:paste-0-to-X",
-    "text-pastry:paste-1-to-x",
-    "text-pastry:custom-range",
-    "text-pastry:undo-last-selection",
-    "text-pastry:paste-multiple-strings"
-  ],
+  "activationCommands": {
+    "atom-workspace": [
+      "text-pastry:paste-0-to-X",
+      "text-pastry:paste-1-to-x"
+    ],
+    "atom-text-editor": [
+     "text-pastry:custom-range",
+     "text-pastry:undo-last-selection",
+     "text-pastry:paste-multiple-strings"
+   ]
+  },
   "repository": "https://github.com/seveibar/text-pastry",
   "license": "MIT",
   "engines": {
-    "atom": ">0.39.0"
+    "atom": ">=0.174.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {"atom-space-pen-views": "^2.0.3"}
 }

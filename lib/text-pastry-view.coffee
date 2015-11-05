@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'atom-space-pen-views'
 
 module.exports =
 # View for entering custom ranges
@@ -16,7 +16,7 @@ class TextPastryView extends View
     # Initializes events for view
     initialize: (@submit) ->
         # Set up command for entering a custom range
-        atom.workspaceView.command "text-pastry:custom-range", => @custom_range()
+        atom.commands.add 'atom-workspace', 'text-pastry:custom-range', => @custom_range()
         view = this
 
         # If backspace is pressed, clear the input field
@@ -57,6 +57,6 @@ class TextPastryView extends View
         if @hasParent()
           @detach()
         else
-          atom.workspaceView.append(this)
+          atom.workspace.append(this)
           @find("input").val("")
           @find("input")[0].focus()

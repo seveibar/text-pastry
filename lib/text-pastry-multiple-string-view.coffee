@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'atom-space-pen-views'
 
 module.exports =
 # View for entering custom ranges
@@ -14,7 +14,7 @@ class TextPastryMultipleStringView extends View
     # Initializes events for view
     initialize: (@submit) ->
         # Set up command for entering a custom range
-        atom.workspaceView.command "text-pastry:paste-multiple-strings", =>
+        atom.commands.add 'atom-workspace', 'text-pastry:paste-multiple-strings', =>
             @open()
         view = this
 
@@ -52,6 +52,6 @@ class TextPastryMultipleStringView extends View
         if @hasParent()
           @detach()
         else
-          atom.workspaceView.append(this)
+          atom.workspace.append(this)
           @find("input").val("")
           @find("input")[0].focus()

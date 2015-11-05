@@ -5,9 +5,9 @@ module.exports =
     view:null
     activate: (state) ->
         # Command for "0 to X" command
-        atom.workspaceView.command "text-pastry:paste-0-to-x", => @paste_values(@step_generator(0, 1))
+        atom.commands.add 'atom-workspace', 'text-pastry:paste-0-to-x', => @paste_values(@step_generator(0, 1))
         # Command for "1 to X" command
-        atom.workspaceView.command "text-pastry:paste-1-to-x", => @paste_values(@step_generator(1, 1))
+        atom.commands.add 'atom-workspace', 'text-pastry:paste-1-to-x', => @paste_values(@step_generator(1, 1))
         # Set up view for "Custom Range" command
         @view = new TextPastryView( (start, step) =>
             @paste_values(@step_generator(start,step)))
@@ -41,8 +41,8 @@ module.exports =
     # This will insert values from the provided generator function to each
     # of the multiple carets.
     paste_values: (generator) ->
-
-        editor = atom.workspace.getActiveEditor()
+        workspace = atom.workspace
+        editor = workspace.getActiveTextEditor()
 
         # Get all the selected ranges (each multiple selection)
         selections = editor.getSelectedBufferRanges()
@@ -93,4 +93,4 @@ module.exports =
         editor.setSelectedBufferRanges new_selections
 
         # Reclaim focus on editor if it was lost
-        atom.workspaceView.focus()
+        atom.views.getView(atom.workspace).focus()
