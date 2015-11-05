@@ -68,7 +68,7 @@ module.exports =
                 length_on_row = 0
 
             # Current placement of caret
-            selection_row = selections[i].start.row
+            selection_row = selections[i].start.row0
             selection_col = selections[i].start.column + length_on_row
 
             # Set editor selection to current caret
@@ -76,7 +76,9 @@ module.exports =
                 selection_row, selection_col)
 
             # Get next value from generator
-            ins_string = "#{generator() || ''}"
+            [next_value, ins_string] = [generator(), '']
+            if next_value != undefined
+                ins_string = "#{next_value}"
 
             # Insert the value where the current caret is
             editor.insertText ins_string
