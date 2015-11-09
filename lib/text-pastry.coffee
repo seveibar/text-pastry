@@ -68,7 +68,7 @@ module.exports =
                 length_on_row = 0
 
             # Current placement of caret
-            selection_row = selections[i].start.row0
+            selection_row = selections[i].start.row
             selection_col = selections[i].start.column + length_on_row
 
             # Set editor selection to current caret
